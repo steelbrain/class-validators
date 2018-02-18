@@ -1,4 +1,4 @@
-// @flow
+/* @flow */
 
 import { validateMethod } from '../'
 
@@ -11,11 +11,14 @@ class Something {
 
 const something = new Something()
 
-try {
-  something.something(2, 'hi')
-  process.exitCode = 1
-} catch (_) {
-  /* No Op */
-}
+describe('class-validators', function() {
+  it('is nice?', function() {
+    expect(function() {
+      something.something(2, 'hi')
+    }).toThrow()
 
-something.something('hi', 2)
+    expect(function() {
+      something.something('hi', 2)
+    }).not.toThrow()
+  })
+})
