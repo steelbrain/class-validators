@@ -32,7 +32,9 @@ function getPrintableType(type: any) {
     return prefix + type + postfix
   }
   if (typeof type === 'object') {
-    return prefix + JSON.stringify(type, (key, value) => getPrintableType(value)) + postfix
+    return (
+      prefix + JSON.stringify(type, (key, value) => (typeof value === 'object' ? value : getPrintableType(value))) + postfix
+    )
   }
   return prefix + type.name + postfix
 }
@@ -60,14 +62,14 @@ export default function validateIndividual(
       throw new Error(' to have variadic inside Object property')
     }
     if (index !== types.length - 1) {
-      throw new Error(` to be last type. Got: ${index + 1} instead of ${types.length - 1}`)
+      throw new Error(` to be last type. Got index: ${index} instead of ${types.length}`)
     }
     try {
       values
         .slice(index)
-        .every((item, itemIndex) => validateIndividual(type, item, itemIndex, types, values, isObjectProperty))
+        .every((item, itemIndex) => validateIndividual(type.of, item, itemIndex, types, values, isObjectProperty))
     } catch (error) {
-      error.message = `+ ${error.mesage}`
+      error.message = `+${error.message}`
       throw error
     }
     return
@@ -91,7 +93,7 @@ export default function validateIndividual(
       try {
         validateIndividual(type[key], value[key], index, types, values, true)
       } catch (error) {
-        error.message = `[${JSON.stringify(key)}]${error.message}`
+        error.message = `->${JSON.stringify(key)}${error.message}`
         throw error
       }
     })
