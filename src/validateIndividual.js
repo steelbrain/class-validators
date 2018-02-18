@@ -67,7 +67,7 @@ export default function validateIndividual(
     try {
       values
         .slice(index)
-        .every((item, itemIndex) => validateIndividual(type.of, item, itemIndex, types, values, isObjectProperty))
+        .forEach((item, itemIndex) => validateIndividual(type.of, item, itemIndex + index, types, values, isObjectProperty))
     } catch (error) {
       error.message = `+${error.message}`
       throw error
