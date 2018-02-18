@@ -3,7 +3,7 @@
 type ValidationType = 'any' | 'var-args' | 'optional' | 'instance'
 type SpecialType<T> = { type: ValidationType, of: T }
 
-export function varArgs<T>(type: T): SpecialType<T> {
+export function varargs<T>(type: T): SpecialType<T> {
   return {
     type: 'var-args',
     of: type,
