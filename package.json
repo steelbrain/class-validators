@@ -6,6 +6,7 @@
   "scripts": {
     "test": "(apm test) && (flow check) && (eslint . ) && (prettier --list-different src/*.js)",
     "clean": "rm -rf lib",
+    "prepare": "npm run build",
     "build": "sb-babel-cli src -o lib",
     "watch": "npm run build -- --watch"
   },
@@ -25,10 +26,11 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-preset-steelbrain": "^5.0.2",
-    "eslint-config-steelbrain": "^5.0.2",
-    "flow-bin": "^0.66.0",
-    "sb-babel-cli": "^0.1.1"
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-flow": "^7.0.0",
+    "eslint-config-steelbrain": "^7.0.0-beta1",
+    "flow-bin": "^0.89.0",
+    "sb-babel-cli": "^1.0.1"
   }
 }

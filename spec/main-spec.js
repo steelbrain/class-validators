@@ -1,6 +1,6 @@
 /* @flow */
 
-import { validateMethod } from '../'
+import { validateMethod } from '..'
 
 class Something {
   @validateMethod(String, Number)
