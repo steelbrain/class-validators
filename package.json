@@ -29,6 +29,6 @@
     "babel-preset-steelbrain": "^5.0.2",
     "eslint-config-steelbrain": "^5.0.2",
     "flow-bin": "^0.66.0",
-    "sb-babel-cli": "^0.1.1"
+    "sb-babel-cli": "^1.0.0"
   }
 }
