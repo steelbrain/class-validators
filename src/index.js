@@ -38,7 +38,7 @@ function validateMethod(...types: Array<any>) {
       validate(types, values, key, className)
       return realCallback(...values)
     }
-    Object.setPrototypeOf(validationCallback.prototype, realCallback.prototype)
+    Object.setPrototypeOf(validationCallback.prototype, target)
 
     // eslint-disable-next-line no-param-reassign
     descriptor.value = validationCallback

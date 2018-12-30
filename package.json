@@ -4,11 +4,12 @@
   "description": "ES Decorators for function param validation",
   "main": "lib/index.js",
   "scripts": {
-    "test": "(apm test) && (flow check) && (eslint . ) && (prettier --list-different src/*.js)",
+    "test": "ava spec/*-spec.js",
     "clean": "rm -rf lib",
     "prepare": "npm run build",
     "build": "sb-babel-cli src -o lib",
-    "watch": "npm run build -- --watch"
+    "watch": "npm run build -- --watch",
+    "lint": "(flow check) && (eslint . ) && (prettier --list-different src/*.js)"
   },
   "repository": {
     "type": "git",
@@ -27,8 +28,10 @@
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-decorators": "^7.2.3",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-flow": "^7.0.0",
+    "ava": "^1.0.1",
     "eslint-config-steelbrain": "^7.0.0-beta1",
     "flow-bin": "^0.89.0",
     "sb-babel-cli": "^1.0.2"

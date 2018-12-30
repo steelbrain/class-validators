@@ -1,5 +1,6 @@
 /* @flow */
 
+import test from 'ava'
 import { validateMethod } from '..'
 
 class Something {
@@ -11,14 +12,16 @@ class Something {
 
 const something = new Something()
 
-describe('class-validators', function() {
-  it('is nice?', function() {
-    expect(function() {
-      something.something(2, 'hi')
-    }).toThrow()
+test('is nice?', function(t) {
+  try {
+    something.something(2, 'hi')
+  } catch (error) {
+    t.pass()
+  }
 
-    expect(function() {
-      something.something('hi', 2)
-    }).not.toThrow()
-  })
+  try {
+    something.something('hi', 2)
+  } catch (error) {
+    t.fail(error)
+  }
 })
